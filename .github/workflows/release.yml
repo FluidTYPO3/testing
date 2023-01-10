@@ -21,10 +21,11 @@ jobs:
         run: "composer require typo3/tailor"
       - name: "Upload to TER"
         working-directory: tailor
-        run: "./vendor/bin/tailor ter:publish $TAG $EXTENSION_KEY --artefact $ARTEFECT_URL"
+        run: "./vendor/bin/tailor ter:publish $TAG $EXTENSION_KEY --artefact $ARTEFECT_URL --comment \"$MESSAGE\""
         env:
           TYPO3_API_USERNAME: ${{ vars.TER_USERNAME }}
           TYPO3_API_TOKEN: ${{ secrets.TER_TOKEN }}
           TAG: ${{ github.ref_name }}
           EXTENSION_KEY: ${{ vars.TER_EXTENSION_KEY }}
           ARTEFECT_URL: "https://github.com/${{ github.repository }}/archive/${{ github.ref }}.zip"
+          MESSAGE: "Automatic release built from GitHub. See the CHANGELOG.md file that is shipped with this release for details."
