@@ -14,11 +14,13 @@ jobs:
           extensions: mbstring, json
           ini-values: date.timezone="Europe/Copenhagen", opcache.fast_shutdown=0
           tools: composer:v2.2
+      - name: "create working directory"
+        run: "mkdir tailor"
       - name: "Install Tailor"
-        working-directory: ./tailor
+        working-directory: tailor
         run: "composer require typo3/tailor"
       - name: "Upload to TER"
-        working-directory: ./tailor
+        working-directory: tailor
         run: "./vendor/bin/tailor ter:publish $TAG $EXTENSION_KEY --artefact $ARTEFECT_URL"
         env:
           TYPO3_API_USERNAME: ${{ env.TER_USERNAME }}
