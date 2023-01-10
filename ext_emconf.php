@@ -18,7 +18,7 @@ $EM_CONF['testing'] = array (
     'modify_tables' => '',
     'clearCacheOnLoad' => 0,
     'lockType' => '',
-    'version' => '1.0.2',
+    'version' => '1.0.3',
     'constraints' =>
         array (
             'depends' =>
